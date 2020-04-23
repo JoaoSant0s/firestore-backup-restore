@@ -1,10 +1,17 @@
 const jsonfile = require('jsonfile')
+const settings = require('./settings');
+const util = require('util');
+
 
 function start (db, file, collection) {
-  // empty collection
+  // empty collection  
+
+  let path = util.format("%s/%s", settings.exportPath, file);
+  console.log(path);
+  
   deleteCollection(db, collection, 100).then(() => {
     // read file to json
-    const json = jsonfile.readFileSync(file)
+    const json = jsonfile.readFileSync(path)
 
     // starting batch firestore jobs
     const batch = db.batch()

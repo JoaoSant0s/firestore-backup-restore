@@ -1,3 +1,7 @@
+# project ignore
+serviceAccountKey.json
+export
+
 # Logs
 logs
 *.log

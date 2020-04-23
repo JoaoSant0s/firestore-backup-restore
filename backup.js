@@ -1,6 +1,10 @@
 const jsonfile = require('jsonfile')
+const fs = require('fs');
 
-function start (db, file, collection) {
+const settings = require('./settings');
+const util = require('util');
+
+function start (db, file, collection) {  
   const ref = db.collection(collection)
   const json = []
 
@@ -13,13 +17,19 @@ function start (db, file, collection) {
         json.push(doc.data())
       })
 
-      console.log(`Writing ${file}...`)
+      let path = util.format("%s/%s", settings.exportPath, file);
 
-      jsonfile.writeFile(file, json, {spaces: 2}, err => {
+      console.log(`Writing ${path}...`);
+
+      if (!fs.existsSync(settings.exportPath)) {
+        fs.mkdirSync(settings.exportPath);
+      }
+
+      jsonfile.writeFile(path, json, {spaces: 2}, err => {
         if (err) {
           console.error(err)
         } else {
-          console.log(`Collection ${collection} successfully written to ${file}.`)
+          console.log(`Collection ${collection} successfully written to ${path}.`)
         }
       })
     })
