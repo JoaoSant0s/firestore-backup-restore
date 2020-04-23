@@ -2,7 +2,6 @@ const jsonfile = require('jsonfile')
 const settings = require('./settings');
 const util = require('util');
 
-
 function start (db, file, collection) {
   // empty collection  
 

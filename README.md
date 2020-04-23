@@ -17,8 +17,12 @@ Start with:
 Options:
 * `backup` or `b` - Backup mode
 * `restore` or `r` - Restore mode
+* `select` or `s` - Select mode
 * `--collection` or `-c` - Name of collection to backup / restore
 * `--file` or `-f` - Name of the file to save / read json data. If no file name provided default is collection name.
+* `--timeStart` or `-s` - Used in the select mode to filter the document in this sessions with create time greater than value
+* `--timeEnd` or `-e` - Used in the select mode to filter the document in this sessions with create time minor than value
+* `--idArrays` or `-i` - Used in the select mode to filter the document in this sessions with documents ids;
 
 Example:
 
