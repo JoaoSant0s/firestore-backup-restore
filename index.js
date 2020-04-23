@@ -1,13 +1,8 @@
-const admin = require('firebase-admin')
-const serviceAccount = require('./serviceAccountKey')
-
 // load modules
-const backup = require('./backup')
-const restore = require('./restore')
+const db = require('./firebase/firestore');
 
-// initialize firestore
-admin.initializeApp({ credential: admin.credential.cert(serviceAccount) })
-const db = admin.firestore()
+const backup = require('./backup');
+const restore = require('./restore');
 
 // get cmd line arguments
 const argv = require('minimist')(process.argv.slice(2))
@@ -24,7 +19,8 @@ switch (mode) {
 
   case 'r':
   case 'restore':
-    restore(db, file, collection)
+    console.log("blocked temporary");
+    //restore(db, file, collection)
     break
 
   default:
