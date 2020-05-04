@@ -67,4 +67,13 @@ function executeMode() {
   }
 }
 
-start()
+start();
+
+var firestoreconsult = {
+  backup: backup,
+  restore: restore,
+  selectByIds: select.selectByIds,
+  selectByTime: select.selectByTime
+}
+
+module.exports = firestoreconsult
