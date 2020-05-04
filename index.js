@@ -39,23 +39,22 @@ function executeMode() {
   switch (mode) {
     case 'b':
     case 'backup':
-      backup(db, file, collection)
+      backupExport(file, collection)
       break
 
     case 'r':
     case 'restore':
-      //console.log("blocked temporary");
-      restore(db, file, collection)
+      restoreExport(file, collection)
       break
 
     case 's':
     case 'select':
       if (ids) {
         console.log(`Select with ids: ${ids}`);
-        select.selectByIds(db, file, collection, ids)
+        selectByIdsExport(file, collection, ids)
       } else if (timeStart) {
         console.log(`Select with time: ${timeStart} and ${timeEnd}`);
-        select.selectByTime(db, file, collection, timeStart, timeEnd)
+        selectByTimeExport(file, collection, timeStart, timeEnd)
       } else {
         console.log('Use params: --timeStart, --timeEnd or --ids');
       }
@@ -67,13 +66,29 @@ function executeMode() {
   }
 }
 
+function backupExport(file, collection) {
+  backup(db, file, collection)
+}
+
+function restoreExport(file, collection) {
+  restore(db, file, collection)
+}
+
+function selectByIdsExport(file, collection, ids) {
+  select.selectByIds(db, file, collection, ids)
+}
+
+function selectByTimeExport(file, collection, timeStart, timeEnd) {
+    select.selectByTime(db, file, collection, timeStart, timeEnd)
+}
+
 start();
 
 var firestoreconsult = {
-  backup: backup,
-  restore: restore,
-  selectByIds: select.selectByIds,
-  selectByTime: select.selectByTime
+  backup: backupExport,
+  restore: restoreExport,
+  selectByIds: selectByIdsExport,
+  selectByTime: selectByTimeExport
 }
 
 module.exports = firestoreconsult
