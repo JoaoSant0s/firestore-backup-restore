@@ -44,8 +44,8 @@ function executeMode() {
 
     case 'r':
     case 'restore':
-      console.log("blocked temporary");
-      //restore(db, file, collection)
+      //console.log("blocked temporary");
+      restore(db, file, collection)
       break
 
     case 's':
