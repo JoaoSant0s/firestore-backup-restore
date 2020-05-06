@@ -1,7 +1,7 @@
 const jsonfile = require('jsonfile')
 const fs = require('fs');
 
-const settings = require('./settings');
+const settings = require('../../settings.json');
 const util = require('util');
 
 const selectByIds = "selectedByIds_"

@@ -1,15 +1,14 @@
 const jsonfile = require('jsonfile')
 const fs = require('fs');
 
-const settings = require('./settings');
+const settings = require('../../settings.json');
 const util = require('util');
 
-function start (db, file, collection) {  
-  const ref = db.collection(collection)
-  const json = []
+function start(db, file, collection) {
+  const ref = db.collection(collection);
+  const json = [];
 
-  console.log(`Getting ${collection}...`)
-
+  console.log(`Getting ${collection}...`);
   ref
     .get()
     .then((snapshot) => {
@@ -25,7 +24,9 @@ function start (db, file, collection) {
         fs.mkdirSync(settings.exportPath);
       }
 
-      jsonfile.writeFile(path, json, {spaces: 2}, err => {
+      jsonfile.writeFile(path, json, {
+        spaces: 2
+      }, err => {
         if (err) {
           console.error(err)
         } else {

@@ -1,10 +1,9 @@
 const jsonfile = require('jsonfile')
-const settings = require('./settings');
+const settings = require('../../settings.json');
 const util = require('util');
 
 function start (db, file, collection) {
   // empty collection  
-
   let path = util.format("%s/%s", settings.exportPath, file);
   console.log(path);
   
