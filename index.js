@@ -26,8 +26,6 @@ function selectByTimeExport(file, collection, timeStart, timeEnd) {
   select.selectByTime(db, file, collection, timeStart, timeEnd)
 }
 
-start();
-
 var firestoreconsult = {
   backup: backupExport,
   restore: restoreExport,
